@@ -13,15 +13,15 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         @livewireStyles
-        @powerGridStyles
+        {{-- @powerGridStyles --}}
     </head>
     <body>
-        <div class="flex justify-center items-center h-screen bg-gray-200 px-6">
+        <div class="flex justify-center items-center bg-gray-200 px-6">
             
                 {{ $slot }}
         
             @livewireScripts
-            @powerGridScripts
+            {{-- @powerGridScripts --}}
         </div>
     </body>
     
