@@ -6,13 +6,13 @@
           <div class="inline-block mt-2 w-1/2 pr-1">
             <label class="block text-sm text-gray-600" for="fname">First Name</label>
             <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="fname" wire:model="loaner.fname" type="text" required="" placeholder="First Name...." aria-label="FirstName">
-            @error('photo') <span class="error">{{ $message }}</span> @enderror
+            @error('loaner.fname') <span class="absolute">{{ $message}}</span> @enderror
           </div>
 
           <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
             <label class="block text-sm text-gray-600" for="lname">Last Name</label>
             <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="lname"  wire:model="loaner.lname" type="text" required="" placeholder="Last Name..." aria-label="LastName">
-            @error('photo') <span class="error">{{ $message }}</span> @enderror
+            @error('loaner.lname') <span class="error">{{ $message }}</span> @enderror
           </div>
           <div class="mt-2">
             <label class="block text-sm text-gray-600" for="email">Email</label>
@@ -36,9 +36,20 @@
           </div>
           <div class="border-b-2 w-full h-1 mt-4"></div>
           <p class="mt-4 text-gray-800 font-medium">Additional information</p>
-          <div class="">
+          <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
             <label class="block text-sm text-gray-600" for="amt">Loan Amount</label>
             <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="amt" wire:model="loaner.amt" type="number" required="" placeholder="$" aria-label="Name">
+          </div>
+          <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+            <label class="block text-sm text-gray-600" for="amt">Type of loan</label>
+            <select wire:model="loaner.type" name="" id="">
+              <option hidden >--Select Type--</option>
+              @foreach ($loanType as $type)
+
+              <option value=""></option>
+              @endforeach
+            </select>
+            <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="amt"  type="number" required="" placeholder="$" aria-label="Name">
           </div>
           <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
             <label class="block text-sm text-gray-600" for="cus_name">Valid ID</label>
@@ -78,7 +89,7 @@
             @error('photo') <span class="error">{{ $message }}</span> @enderror
           </div>
           <div class="mt-4">
-            <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="button" wire.click="submit">Submit</button>
+            <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="button" wire:click="submit">Submit</button>
           </div>
         </form>
         @isset($loaner)
